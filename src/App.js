@@ -1,5 +1,6 @@
 import React from 'react';
 import {StyleSheet, View, Text, SafeAreaView, StatusBar} from 'react-native';
+import Carousel from './Carousel';
 
 const App = function() {
 
@@ -9,6 +10,7 @@ const App = function() {
       <View>
         <Text style={styles.text}>Hello React Native</Text>
       </View>
+      <Carousel/>
     </SafeAreaView >
   );
 };
