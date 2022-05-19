@@ -1,28 +1,20 @@
 import React from 'react';
-import {StyleSheet, View, Text, SafeAreaView, StatusBar} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
+import CarouselCards from './CarouselCards';
 
-const App = function() {
-
+export default function App() {
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar />
-      <View>
-        <Text style={styles.text}>Hello React Native</Text>
-      </View>
-    </SafeAreaView >
+      <CarouselCards />
+    </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
+    backgroundColor: '#fff',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: '600',
+    justifyContent: 'center',
+    padding: 50
   },
 });
-
-export default App;
