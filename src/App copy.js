@@ -4,42 +4,44 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from './Button';
 
 const App = function() {
+  const [transform, setTransform] = useState([]);
+
   const animateValue = useRef(new Animated.Value(0)).current;
-  const [animateStyle, setAnimateStyle] = useState([]);
 
   const interpolate = animateValue.interpolate({
     inputRange: [0, 1],
     outputRange: ['0deg', '-360deg']
   });
 
-  const options = {toValue: 1, duration: 3000, useNativeDriver: true};
+  const options = {toValue: 1, duration: 3000, useNativeDriver: false};
 
-  // Set Transform Style and start animation
+  // Start whatever animation styles you have created
   const rotateY = function() {
-    setAnimateStyle({transform: [{rotateY: interpolate}, {perspective: 400}]});
+    setTransform([{rotateY: interpolate}]);
     Animated.timing(animateValue, options).start();
   };
 
-  // Set Transform Style and start animation
+  // Start whatever animation styles you have created
   const rotateX = function() {
-    setAnimateStyle({transform: [{rotateX: interpolate}, {perspective: 400}]});
-    Animated.timing(animateValue, options).start(({finished}) => {
-      console.log("finshed:", finished);
-    });
-  };
-
-  // Set Transform Style and start animation
-  const rotateZ = function() {
-    setAnimateStyle({transform: [{rotateZ: interpolate}]});
+    setTransform([{rotateX: interpolate}]);
     Animated.timing(animateValue, options).start();
   };
+
+  // Start whatever animation styles you have created
+  const rotateZ = function() {
+    setTransform([{rotateZ: interpolate}]);
+    Animated.timing(animateValue, options).start();
+  };
+
+  // const transform = [{rotateY: interpolate}];
+  const transformStyle = {transform};
 
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar />
 
       <View style={styles.main}>
-        <Animated.View style={[styles.circle, animateStyle]}>
+        <Animated.View style={[styles.circle, transformStyle]}>
           <Ionicons name="ios-arrow-up" size={50} color='#EEE' />
         </Animated.View>
       </View>
