@@ -7,29 +7,30 @@ import Button from './Button';
 const App = function() {
   const [rotateValue, setRotateValue] = useState(0);
   const [translateValue, setTranslateValue] = useState(0);
-  const [transformStyle, setTransformStyle] = useState([]);
+  const [transform, setTransform] = useState([]);
 
   const moveDown = function() {
-    setTransformStyle({transform: [{translateY: translateValue + 40}]});
+    setTransform([{translateY: translateValue + 40}]);
     setTranslateValue(translateValue + 40);
   };
 
   const moveUp = function() {
-    setTransformStyle({transform: [{translateY: translateValue - 40}]});
+    setTransform([{translateY: translateValue - 40}]);
     setTranslateValue(translateValue - 40);
   };
 
   const rotate = function() {
-    setTransformStyle({transform: [{rotateZ: `${rotateValue + 45}deg`}]});
+    setTransform([{rotateZ: `${rotateValue + 45}deg`}]);
     setRotateValue(rotateValue + 45);
   };
 
   const reset = function() {
-    setTransformStyle({});
+    setTransform([]);
     setTranslateValue(0);
     setRotateValue(0);
   };
 
+  const transformStyle = {transform};
   console.log("style:", transformStyle);
 
   return (
